@@ -3,24 +3,21 @@
 
 	// Floating UI for Popups
 	import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
-	import { AppBar, AppShell, storePopup } from '@skeletonlabs/skeleton';
+	import { AppShell, storePopup } from '@skeletonlabs/skeleton';
+	// Import components
+	import LandingPageFooter from '$lib/landingPage/LandingPageFooter.svelte';
+	import LandingPageHeader from '$lib/landingPage/LandingPageHeader.svelte';
+
+	// Set the default options for all popups
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
 </script>
 
 <AppShell>
 	<svelte:fragment slot="header">
-		<AppBar gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
-			<svelte:fragment slot="lead">(icon)</svelte:fragment>
-			Sharing is caring
-			<svelte:fragment slot="trail">(actions)</svelte:fragment>
-		</AppBar>
+		<LandingPageHeader />
 	</svelte:fragment>
-	<svelte:fragment slot="sidebarLeft">Sidebar Left</svelte:fragment>
-	<!-- (sidebarRight) -->
-	<!-- (pageHeader) -->
-	<!-- Router Slot -->
 	<slot />
-	<!-- ---- / ---- -->
-	<svelte:fragment slot="pageFooter">Page Footer</svelte:fragment>
-	<!-- (footer) -->
+	<svelte:fragment slot="footer">
+		<LandingPageFooter />
+	</svelte:fragment>
 </AppShell>
